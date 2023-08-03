@@ -1,12 +1,9 @@
-import { Button, Dropdown, Layout, Menu, Space, Typography, theme } from "antd";
+import { Button, Dropdown, Layout, Menu, Space, Typography } from "antd";
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import { useState } from "react";
 const { Header, Content, Footer } = Layout;
 
 const MainLayout = ({ children }) => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
   const [open, setOpen] = useState(false);
 
   const handleOpenChange = (flag) => {
@@ -42,7 +39,9 @@ const MainLayout = ({ children }) => {
         }}
       >
         <div>
-          <Typography style={{ color: "white", fontWeight: "bold", fontSize: '20px' }}>
+          <Typography
+            style={{ color: "white", fontWeight: "bold", fontSize: "20px" }}
+          >
             Compu Build
           </Typography>
         </div>
@@ -75,20 +74,13 @@ const MainLayout = ({ children }) => {
           minHeight: "100vh",
         }}
       >
-        <div
-          className="site-layout-content"
-          style={{
-            background: colorBgContainer,
-          }}
-        >
-          {children}
-        </div>
+        <div>{children}</div>
       </Content>
       <Footer
         style={{
           textAlign: "center",
-          background: 'black',
-          color: 'white'
+          background: "black",
+          color: "white",
         }}
       >
         Compu Build ©2023 Created by Tasnim Pricila

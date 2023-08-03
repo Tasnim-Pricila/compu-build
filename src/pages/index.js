@@ -1,7 +1,12 @@
+import FeaturedProducts from "@/components/FeaturedProducts";
 import MainLayout from "@/components/Layouts/MainLayout";
 
 const HomaPage = () => {
-  return <div>Homepage</div>;
+  return (
+    <div>
+      <FeaturedProducts />
+    </div>
+  );
 };
 
 export default HomaPage;
