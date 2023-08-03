@@ -1,10 +1,43 @@
-import { Button, Col, Divider, Rate, Row, Typography } from "antd";
+import {
+  Button,
+  Col,
+  Divider,
+  Form,
+  Input,
+  Modal,
+  Rate,
+  Row,
+  Typography,
+  message,
+} from "antd";
 import Image from "next/image";
 import processor from "@/assets/images/processor.jpg";
 import { CommentOutlined } from "@ant-design/icons";
+import { useState } from "react";
 const { Title } = Typography;
 
 const ProductDetail = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  const [form] = Form.useForm();
+  const onFinish = () => {
+    message.success("Submit success!");
+  };
+  const onFinishFailed = () => {
+    message.error("Submit failed!");
+  };
+  
   return (
     <>
       <Row
@@ -90,25 +123,76 @@ const ProductDetail = () => {
               Get specific details about this product from customers who own it.
             </Typography>
           </div>
-          <Button type="primary">Write a Review</Button>
+          <Button type="primary" onClick={showModal}>
+            Write a Review
+          </Button>
         </div>
         <Divider />
       </Row>
       <div
         style={{
           height: "20vh",
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          border: '1px solid gray'
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          border: "1px solid gray",
         }}
       >
-        <CommentOutlined style={{ fontSize: '26px', color: '#08c' }}  />
+        <CommentOutlined style={{ fontSize: "26px", color: "#08c" }} />
         <Title level={5}>
           This product has no reviews yet. Be the first one to write a review.
         </Title>
       </div>
+      <Modal
+        title="Write Review"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <Form
+          form={form}
+          layout="vertical"
+            onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          <Form.Item
+            name="rating"
+            label="Rating"
+            rules={[
+              {
+                required: true,
+              },
+              {
+                type: "number",
+              },
+            ]}
+          >
+            <Rate allowHalf defaultValue={0} />
+          </Form.Item>
+          <Form.Item
+            name="review"
+            label="Your review"
+            rules={[
+              {
+                required: true,
+              },
+              {
+                type: "string",
+                min: 6,
+              },
+            ]}
+          >
+            <Input placeholder="Your review" />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
     </>
   );
 };
