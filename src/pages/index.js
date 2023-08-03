@@ -1,3 +1,4 @@
+import FeaturedCategories from "@/components/FeaturedCategories";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import MainLayout from "@/components/Layouts/MainLayout";
 
@@ -5,6 +6,7 @@ const HomaPage = () => {
   return (
     <div>
       <FeaturedProducts />
+      <FeaturedCategories/>
     </div>
   );
 };
