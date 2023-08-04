@@ -1,11 +1,12 @@
 import { DownOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Layout, Space, Typography } from "antd";
-import { SessionProvider, useSession } from "next-auth/react";
+import { SessionProvider, signOut, useSession } from "next-auth/react";
 import React, { useState } from "react";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const { data: session } = useSession();
+//   console.log(session);
   const handleOpenChange = (flag) => {
     setOpen(flag);
   };
@@ -66,8 +67,9 @@ const Header = () => {
               type="text"
               block
               style={{ color: "red", fontWeight: "bold" }}
+              onClick={() => signOut()}
             >
-              <LogoutOutlined onClick={() => signOut()} />
+              <LogoutOutlined  />
               Logout
             </Button>
           ) : (
