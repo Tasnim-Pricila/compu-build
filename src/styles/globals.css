@@ -105,3 +105,12 @@ a {
     color-scheme: dark;
   }
 } */
+
+.login-background{
+  height: 100vh;
+  background: url('../assets/images/login-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: overlay;
+  background-color: rgba(212, 155, 231, 0.307);
+}
