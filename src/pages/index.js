@@ -1,16 +1,14 @@
 import FeaturedCategories from "@/components/FeaturedCategories";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import MainLayout from "@/components/Layouts/MainLayout";
-import PCBuilder from "@/components/PCBuilder";
-import ProductDetail from "@/components/ProductDetail";
+import Banner from "@/components/UI/Banner";
 
 const HomaPage = () => {
   return (
     <div>
-      <PCBuilder/>
-      {/* <ProductDetail/>
+      <Banner/>
       <FeaturedProducts />
-      <FeaturedCategories/> */}
+      <FeaturedCategories/>
     </div>
   );
 };

@@ -37,11 +37,16 @@ const PCBuilder = () => {
           <Image src={processor} alt="processor" layout="responsive"></Image>
         </Col>
         <Col span={15}>
-          <Typography.Title level={4}>CPU</Typography.Title>
+          <Typography.Title level={5}>CPU</Typography.Title>
           <Skeleton active paragraph={{ rows: 0 }} />
+          <div>
+            <Typography.Title level={4} style={{marginTop: 0, marginBottom: 0}}>Product Name</Typography.Title>
+            <Typography>Model: PRO MP242C</Typography>
+          </div>
         </Col>
         <Col span={4}>
           <Skeleton active paragraph={{ rows: 0 }} />
+          <Typography.Title level={4} style={{marginTop: 0}}>10000/-</Typography.Title>
         </Col>
         <Col span={3}>
           <Button type="primary">Choose</Button>

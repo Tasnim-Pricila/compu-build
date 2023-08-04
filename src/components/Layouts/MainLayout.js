@@ -70,7 +70,7 @@ const MainLayout = ({ children }) => {
       </Header>
       <Content
         style={{
-          padding: "0 50px",
+          // padding: "0 50px",
           minHeight: "100vh",
         }}
       >
