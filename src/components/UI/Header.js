@@ -1,12 +1,13 @@
 import { DownOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Layout, Space, Typography } from "antd";
 import { SessionProvider, signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const { data: session } = useSession();
-//   console.log(session);
+  //   console.log(session);
   const handleOpenChange = (flag) => {
     setOpen(flag);
   };
@@ -39,11 +40,13 @@ const Header = () => {
         }}
       >
         <div>
-          <Typography
-            style={{ color: "white", fontWeight: "bold", fontSize: "20px" }}
-          >
-            Compu Build
-          </Typography>
+          <Link href="/">
+            <Typography
+              style={{ color: "white", fontWeight: "bold", fontSize: "20px" }}
+            >
+              Compu Build
+            </Typography>
+          </Link>
         </div>
         <Space>
           <Dropdown
@@ -61,7 +64,9 @@ const Header = () => {
               </Space>
             </Button>
           </Dropdown>
-          <Button type="primary">PC Builder</Button>
+          <Link href='/pc-builder'>
+            <Button type="primary">PC Builder</Button>
+          </Link>
           {session?.user?.email ? (
             <Button
               type="text"
@@ -69,14 +74,16 @@ const Header = () => {
               style={{ color: "red", fontWeight: "bold" }}
               onClick={() => signOut()}
             >
-              <LogoutOutlined  />
+              <LogoutOutlined />
               Logout
             </Button>
           ) : (
-            <Button type="text" block style={{ color: "white" }}>
-              <UserOutlined />
-              Login / Register
-            </Button>
+            <Link href="/login">
+              <Button type="text" block style={{ color: "white" }}>
+                <UserOutlined />
+                Login / Register
+              </Button>
+            </Link>
           )}
         </Space>
       </Layout.Header>
