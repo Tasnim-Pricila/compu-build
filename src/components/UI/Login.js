@@ -1,12 +1,30 @@
+import { auth } from "@/firebase/firebase.auth";
 import { GithubOutlined, GoogleOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Typography } from "antd";
 import { signIn } from "next-auth/react";
-import React from "react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 const Login = () => {
+  const router = useRouter();
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
+
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+    // console.log("Received values of form: ", values);
+    signInWithEmailAndPassword(values.email, values.password)
   };
+  useEffect(() => {
+    if (user) {
+      router.push('/');
+    }
+  }, [user, router]);
+
   return (
     <div>
       <Form
@@ -18,12 +36,12 @@ const Login = () => {
         onFinish={onFinish}
       >
         <Form.Item
-          label="Username"
-          name="username"
+          label="Email"
+          name="email"
           rules={[
             {
               required: true,
-              message: "Please input your username!",
+              message: "Please input your email!",
             },
           ]}
         >
@@ -61,7 +79,7 @@ const Login = () => {
         <Typography>Or login with</Typography>
         <div>
           <GoogleOutlined
-            style={{ fontSize: "30px", marginRight: '10px' }}
+            style={{ fontSize: "30px", marginRight: "10px" }}
             onClick={() =>
               signIn("google", {
                 callbackUrl: "http://localhost:3000/",

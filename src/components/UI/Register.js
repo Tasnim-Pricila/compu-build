@@ -1,10 +1,22 @@
+import { auth } from "@/firebase/firebase.auth";
 import { Button, Form, Input } from "antd";
-import React from "react";
+import { useRouter } from "next/router";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 const Register = () => {
+  const router = useRouter();
+
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+    // console.log("Received values of form: ", values);
+    createUserWithEmailAndPassword(values.email, values.password)
   };
+  useEffect(() => {
+    if (user) {
+      router.push('/');
+    }
+  }, [user, router]);
   return (
     <div>
       <Form
