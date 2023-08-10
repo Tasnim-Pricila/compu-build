@@ -1,11 +1,11 @@
 import React from 'react';
 
-const allCategories = () => {
+const allComponents = () => {
     return (
         <div>
-            
+            compo
         </div>
     );
 };
 
-export default allCategories;
+export default allComponents;
