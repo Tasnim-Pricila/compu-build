@@ -11,7 +11,7 @@ const Header = () => {
   const { data: session } = useSession();
   const [user, loading, error] = useAuthState(auth);
 
-  console.log(user);
+  // console.log(user);
   const [logOut] = useSignOut(auth);
   const handleOpenChange = (flag) => {
     setOpen(flag);
