@@ -15,7 +15,7 @@ const ComponentDetail = ({ component }) => {
           lg: 32,
         }}
       >
-        <Col span={12}>
+        <Col xs={24} md={12} lg={8}>
           <Image
             width="200"
             height="350"
@@ -24,7 +24,7 @@ const ComponentDetail = ({ component }) => {
             layout="responsive"
           ></Image>
         </Col>
-        <Col span={12}>
+        <Col xs={24} md={12} lg={16}>
           <Title level={3}>{component?.name}</Title>
           <Rate allowHalf defaultValue={4.5} /> 61 Reviews
           <Typography style={{ marginTop: "10px" }}>
@@ -70,7 +70,7 @@ const ComponentDetail = ({ component }) => {
           <Typography>3 Years (No Warranty for Fan or Cooler)</Typography>
         </Col>
       </Row>
-      <ReviewSection reviews={component?.reviews}/>
+      <ReviewSection reviews={component?.reviews} />
     </div>
   );
 };

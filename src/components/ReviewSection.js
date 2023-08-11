@@ -15,7 +15,7 @@ import {
 import React, { useState } from "react";
 
 const ReviewSection = ({ reviews }) => {
-  console.log(reviews);
+  //   console.log(reviews);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -37,7 +37,7 @@ const ReviewSection = ({ reviews }) => {
     message.error("Submit failed!");
   };
   return (
-    <div>
+    <div style={{ marginBottom: "20px" }}>
       <Row>
         <div
           style={{
@@ -62,7 +62,7 @@ const ReviewSection = ({ reviews }) => {
         </div>
         <Divider />
       </Row>
-      {reviews?.length <= 0 ? (
+      {!reviews?.length ? (
         <div
           style={{
             height: "20vh",
