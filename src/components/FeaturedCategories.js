@@ -14,7 +14,7 @@ const FeaturedCategories = ({allCategories}) => {
         Featured Categories
       </Typography.Title>
       <Row
-        style={{ marginTop: "40px", marginBottom: "40px", padding: "0 20px" }}
+        style={{ marginTop: "40px", marginBottom: "40px", padding: "0 20px", width: "100%" }}
         gutter={{
           xs: 8,
           sm: 16,

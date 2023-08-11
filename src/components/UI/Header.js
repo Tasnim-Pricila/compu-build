@@ -69,6 +69,9 @@ const Header = () => {
               </Space>
             </Button>
           </Dropdown>
+          <Link href="/components/allComponents">
+            <Button type="text" style={{ color: "white" }}>Components</Button>
+          </Link>
           <Link href="/pc-builder">
             <Button type="primary">PC Builder</Button>
           </Link>

@@ -5,7 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'os.alipayobjects.com',
+        hostname: 'www.startech.com.bd',
       },
     ],
   },
