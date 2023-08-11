@@ -48,15 +48,11 @@ AllComponents.getLayout = function getLayout(page) {
 };
 
 export const getStaticProps = async () => {
-  const catResponse = await fetch("http://localhost:5000/api/v1/category");
-  const catData = await catResponse.json();
-
   const comResponse = await fetch("http://localhost:5000/api/v1/component");
   const comData = await comResponse.json();
 
   return {
     props: {
-      allCategories: catData,
       allComponents: comData,
     },
   };

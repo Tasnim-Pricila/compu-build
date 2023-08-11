@@ -1,12 +1,24 @@
 import MainLayout from "@/components/Layouts/MainLayout";
-import Login from "@/components/UI/Login";
+import LoginSection from "@/components/UI/LoginSection";
 import Register from "@/components/UI/Register";
+// import { auth } from "@/firebase/firebase.auth";
 import { HomeOutlined, LoginOutlined } from "@ant-design/icons";
 import { Breadcrumb, Card, Tabs, Typography } from "antd";
 import Link from "next/link";
-import React from "react";
+// import { useRouter } from "next/router";
+// import React, { useEffect } from "react";
+// import { useAuthState } from "react-firebase-hooks/auth";
 
-const login = () => {
+const Login = () => {
+  // const router = useRouter();
+  // const [user, loading, error] = useAuthState(auth);
+
+  // useEffect(() => {
+  //   if (user?.email) {
+  //     router.push("/pc-builder");
+  //   }
+  // }, [user?.email]);
+  // console.log(user);
   return (
     <div>
       <div
@@ -61,7 +73,7 @@ const login = () => {
         >
           <Tabs defaultActiveKey="1" centered>
             <Tabs.TabPane tab="Login" key="1">
-              <Login />
+              <LoginSection />
             </Tabs.TabPane>
             <Tabs.TabPane tab="Register" key="2">
               <Register />
@@ -73,8 +85,8 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
 
-login.getLayout = function getLayout(page) {
+Login.getLayout = function getLayout(page) {
   return <MainLayout>{page}</MainLayout>;
 };

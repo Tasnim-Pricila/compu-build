@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 
-const Login = () => {
+const LoginSection = () => {
   const router = useRouter();
   const [
     signInWithEmailAndPassword,
@@ -100,4 +100,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginSection;
