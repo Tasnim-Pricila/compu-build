@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 const { Meta } = Card;
 
 const ComponentCard = ({ component }) => {
+    
   const router = useRouter();
   return (
     <Col

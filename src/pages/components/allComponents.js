@@ -1,9 +1,21 @@
 import MainLayout from "@/components/Layouts/MainLayout";
 import ComponentCard from "@/components/UI/ComponentCard";
+import { useAppSelector } from "@/redux/hook";
 import { Row, Typography } from "antd";
 import React from "react";
 
-const allComponents = ({ allComponents }) => {
+const AllComponents = ({ allComponents }) => {
+  const { category } = useAppSelector((state) => state.component);
+
+  let components;
+  if (category) {
+    components = allComponents?.data?.filter(
+      (component) => component?.category === category
+    );
+  } else {
+    components = allComponents.data;
+  }
+  
   return (
     <>
       <Typography.Title
@@ -19,10 +31,9 @@ const allComponents = ({ allComponents }) => {
           xs: 8,
           sm: 16,
           md: 20,
-        //   lg: 32,
         }}
       >
-        {allComponents?.data?.map((component) => (
+        {components?.map((component) => (
           <ComponentCard component={component} key={component._id} />
         ))}
       </Row>
@@ -30,8 +41,9 @@ const allComponents = ({ allComponents }) => {
   );
 };
 
-export default allComponents;
-allComponents.getLayout = function getLayout(page) {
+export default AllComponents;
+
+AllComponents.getLayout = function getLayout(page) {
   return <MainLayout>{page}</MainLayout>;
 };
 

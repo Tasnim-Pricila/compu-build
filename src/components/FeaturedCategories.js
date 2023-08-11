@@ -1,8 +1,17 @@
 import { Card, Col, Row, Space, Typography } from "antd";
 import Image from "next/image";
 import processor from "@/assets/images/processor.jpg";
+import { useAppDispatch } from "@/redux/hook";
+import { setCategory } from "@/redux/features/components/componentSlice";
+import { useRouter } from "next/router";
 
 const FeaturedCategories = ({allCategories}) => {
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+  const handleFilter = (category) => {
+    dispatch(setCategory(category));
+    router.push('/components/allComponents')
+  }
   
   return (
     <div>
@@ -31,6 +40,7 @@ const FeaturedCategories = ({allCategories}) => {
                 justifyContent: "center",
                 alignItems: "center",
               }}
+              onClick={() => handleFilter(category?.name)}
             >
               <Image
                 src={processor}
