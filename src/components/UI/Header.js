@@ -1,16 +1,16 @@
-import { auth } from "@/firebase/firebase.auth";
+// import { auth } from "@/firebase/firebase.auth";
 import { DownOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Layout, Space, Typography } from "antd";
 import { SessionProvider, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
+// import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const { data: session } = useSession();
-  const [user, loading, error] = useAuthState(auth);
+  // const [user, loading, error] = useAuthState(auth);
   const router = useRouter();
 
   const [logOut] = useSignOut(auth);
@@ -88,12 +88,12 @@ const Header = () => {
           <Link href="/pc-builder">
             <Button type="primary">PC Builder</Button>
           </Link>
-          {session?.user?.email || user?.email ? (
+          {session?.user?.email ? (
             <Button
               type="text"
               block
               style={{ color: "red", fontWeight: "bold" }}
-              onClick={session?.user?.email ? () => signOut() : () => logOut()}
+              onClick={() => signOut()}
             >
               <LogoutOutlined />
               Logout
