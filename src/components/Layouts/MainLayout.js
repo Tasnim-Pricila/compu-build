@@ -7,9 +7,6 @@ const { Content, Footer } = Layout;
 
 const MainLayout = ({ children }) => {
  
-  
-  
-
   return (
     <SessionProvider>
       <Layout className="layout">
@@ -20,7 +17,7 @@ const MainLayout = ({ children }) => {
             minHeight: "100vh",
           }}
         >
-          <div>{children}</div>
+          <>{children}</>
         </Content>
         <Footer
           style={{

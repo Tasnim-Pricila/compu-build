@@ -3,7 +3,7 @@ import ComponentCard from "./UI/ComponentCard";
 
 const FeaturedProducts = ({ allComponents }) => {
   return (
-    <div>
+    <>
       <Typography.Title
         style={{
           textAlign: "center",
@@ -24,7 +24,7 @@ const FeaturedProducts = ({ allComponents }) => {
           <ComponentCard component={component} key={component._id}/>
         ))}
       </Row>
-    </div>
+    </>
   );
 };
 

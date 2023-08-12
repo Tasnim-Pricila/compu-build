@@ -12,7 +12,9 @@ componentDetails.getLayout = function getLayout(page) {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/api/v1/component");
+  const res = await fetch(
+    "https://compu-build-server.vercel.app/api/v1/component"
+  );
   const data = await res.json();
 
   const paths = data?.data?.map((data) => ({
@@ -27,7 +29,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { params } = context;
   const res = await fetch(
-    `http://localhost:5000/api/v1/component/${params.componentId}`
+    `https://compu-build-server.vercel.app/api/v1/component/${params.componentId}`
   );
   const data = await res.json();
 

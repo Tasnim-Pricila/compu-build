@@ -28,11 +28,13 @@ const Category = ({ category, components }) => {
 export default Category;
 
 Category.getLayout = function getLayout(page) {
-    return <MainLayout>{page}</MainLayout>;
-  };
+  return <MainLayout>{page}</MainLayout>;
+};
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/api/v1/category");
+  const res = await fetch(
+    "https://compu-build-server.vercel.app/api/v1/category"
+  );
   const data = await res.json();
 
   const paths = data?.data?.map((data) => ({
@@ -47,11 +49,13 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { params } = context;
   const res = await fetch(
-    `http://localhost:5000/api/v1/category/choose/${params.categoryName}`
+    `https://compu-build-server.vercel.app/api/v1/category/choose/${params.categoryName}`
   );
   const data = await res.json();
 
-  const comResponse = await fetch("http://localhost:5000/api/v1/component");
+  const comResponse = await fetch(
+    "https://compu-build-server.vercel.app/api/v1/component"
+  );
   const comData = await comResponse.json();
 
   return {

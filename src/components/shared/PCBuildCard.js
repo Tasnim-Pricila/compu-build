@@ -17,7 +17,7 @@ const PCBuildCard = ({
   const router = useRouter();
   const handleChoose = (name) => {
     dispatch(setCategory(name));
-    router.push(`/pc-builder/${name}`);
+    router.push(`/pc-builder/choose/${name}`);
   };
 
   return (

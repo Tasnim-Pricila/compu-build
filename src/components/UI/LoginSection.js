@@ -5,29 +5,26 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import SocialLogin from "./SocialLogin";
 
 const LoginSection = () => {
-  const router = useRouter();
-  const [
-    signInWithEmailAndPassword,
-    user,
-    loading,
-    error,
-  ] = useSignInWithEmailAndPassword(auth);
+  // const router = useRouter();
+  // const [signInWithEmailAndPassword, user] =
+  //   useSignInWithEmailAndPassword(auth);
 
-  const onFinish = (values) => {
-    // console.log("Received values of form: ", values);
-    signInWithEmailAndPassword(values.email, values.password)
-  };
-  useEffect(() => {
-    if (user) {
-      router.push('/');
-    }
-  }, [user, router]);
+  // const onFinish = (values) => {
+  //   // console.log("Received values of form: ", values);
+  //   signInWithEmailAndPassword(values.email, values.password);
+  // };
+  // useEffect(() => {
+  //   if (user) {
+  //     router.push("/");
+  //   }
+  // }, [user, router]);
 
   return (
-    <div>
-      <Form
+    <>
+      {/* <Form
         name="login_form"
         layout="vertical"
         initialValues={{
@@ -95,8 +92,9 @@ const LoginSection = () => {
             }
           />
         </div>
-      </div>
-    </div>
+      </div> */}
+      <SocialLogin/>
+    </>
   );
 };
 

@@ -15,7 +15,7 @@ const AllComponents = ({ allComponents }) => {
   } else {
     components = allComponents.data;
   }
-  
+
   return (
     <>
       <Typography.Title
@@ -48,7 +48,9 @@ AllComponents.getLayout = function getLayout(page) {
 };
 
 export const getStaticProps = async () => {
-  const comResponse = await fetch("http://localhost:5000/api/v1/component");
+  const comResponse = await fetch(
+    "https://compu-build-server.vercel.app/api/v1/component"
+  );
   const comData = await comResponse.json();
 
   return {

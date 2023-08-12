@@ -9,14 +9,14 @@ const Choose = ({ compo }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { category } = useAppSelector((state) => state.component);
-  let components;
-  if (category) {
-    components = compo?.data?.filter(
+  // let components;
+  // if (category) {
+    const components = compo?.data?.filter(
       (component) => component?.category === category
     );
-  } else {
-    components = compo.data;
-  }
+  // } else {
+  //   components = compo.data;
+  // }
 
   const handleBuilder = (component) => {
     dispatch(setProcessor(component));
@@ -84,7 +84,9 @@ Choose.getLayout = function getLayout(page) {
 };
 
 export const getServerSideProps = async (context) => {
-  const components = await fetch(`http://localhost:5000/api/v1/component`);
+  const components = await fetch(
+    `https://compu-build-server.vercel.app/api/v1/component`
+  );
   const data = await components.json();
 
   return {

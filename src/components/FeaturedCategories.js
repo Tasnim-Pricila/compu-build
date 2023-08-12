@@ -5,14 +5,14 @@ import { useAppDispatch } from "@/redux/hook";
 import { setCategory } from "@/redux/features/components/componentSlice";
 import { useRouter } from "next/router";
 
-const FeaturedCategories = ({allCategories}) => {
+const FeaturedCategories = ({ allCategories }) => {
   const router = useRouter();
   const handleFilter = (categoryName) => {
-    router.push(`/category/${categoryName}`)
-  }
-  
+    router.push(`/category/${categoryName}`);
+  };
+
   return (
-    <div>
+    <>
       <Typography.Title
         style={{
           textAlign: "center",
@@ -21,7 +21,12 @@ const FeaturedCategories = ({allCategories}) => {
         Featured Categories
       </Typography.Title>
       <Row
-        style={{ marginTop: "40px", marginBottom: "40px", padding: "0 20px", width: "100%" }}
+        style={{
+          marginTop: "40px",
+          marginBottom: "40px",
+          padding: "0 20px",
+          width: "100%",
+        }}
         gutter={{
           xs: 8,
           sm: 16,
@@ -30,7 +35,15 @@ const FeaturedCategories = ({allCategories}) => {
         }}
       >
         {allCategories?.data?.slice(0, 6).map((category, i) => (
-          <Col className="gutter-row" span={4} key={i}>
+          <Col
+            xs={24}
+            sm={12}
+            md={8}
+            lg={4}
+            className="gutter-row"
+            span={4}
+            key={i}
+          >
             <Card
               hoverable
               style={{
@@ -50,9 +63,8 @@ const FeaturedCategories = ({allCategories}) => {
             </Card>
           </Col>
         ))}
-        
       </Row>
-    </div>
+    </>
   );
 };
 
