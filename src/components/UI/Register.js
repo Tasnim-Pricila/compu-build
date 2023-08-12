@@ -1,8 +1,8 @@
-import { auth } from "@/firebase/firebase.auth";
-import { Button, Form, Input } from "antd";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+// import { auth } from "@/firebase/firebase.auth";
+// import { Button, Form, Input } from "antd";
+// import { useRouter } from "next/router";
+// import { useEffect } from "react";
+// import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import SocialLogin from "./SocialLogin";
 
 const Register = () => {
