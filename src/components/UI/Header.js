@@ -3,6 +3,7 @@ import { DownOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Layout, Space, Typography } from "antd";
 import { SessionProvider, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 
@@ -10,29 +11,41 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const { data: session } = useSession();
   const [user, loading, error] = useAuthState(auth);
+  const router = useRouter();
 
-  // console.log(user);
   const [logOut] = useSignOut(auth);
   const handleOpenChange = (flag) => {
     setOpen(flag);
   };
-  const handleMenuClick = (e) => {
-    // if (e.key === '3') {
-    //   setOpen(false);
-    // }
-  };
+
   const items = [
     {
-      label: "CPU",
+      label: <Link href="/category/Processor">Processor</Link>,
       key: "1",
     },
     {
-      label: "Motherboard",
+      label: <Link href="/category/Motherboard">Motherboard</Link>,
       key: "2",
     },
     {
-      label: "Cooler",
+      label: <Link href="/category/RAM">RAM</Link>,
       key: "3",
+    },
+    {
+      label: <Link href="/category/Power Supply Unit">Power Supply Unit</Link>,
+      key: "4",
+    },
+    {
+      label: <Link href="/category/Storage Device">Storage Device</Link>,
+      key: "5",
+    },
+    {
+      label: <Link href="/category/Monitor">Monitor</Link>,
+      key: "6",
+    },
+    {
+      label: <Link href="/category/Keyboard">Keyboard</Link>,
+      key: "7",
     },
   ];
   return (
@@ -44,20 +57,18 @@ const Header = () => {
           justifyContent: "space-between",
         }}
       >
-        <div>
-          <Link href="/">
-            <Typography
-              style={{ color: "white", fontWeight: "bold", fontSize: "20px" }}
-            >
-              Compu Build
-            </Typography>
-          </Link>
-        </div>
+        <Link href="/">
+          <Typography
+            style={{ color: "white", fontWeight: "bold", fontSize: "20px" }}
+          >
+            Compu Build
+          </Typography>
+        </Link>
+
         <Space>
           <Dropdown
             menu={{
               items,
-              onClick: handleMenuClick,
             }}
             onOpenChange={handleOpenChange}
             open={open}
@@ -70,7 +81,9 @@ const Header = () => {
             </Button>
           </Dropdown>
           <Link href="/components/allComponents">
-            <Button type="text" style={{ color: "white" }}>Components</Button>
+            <Button type="text" style={{ color: "white" }}>
+              Components
+            </Button>
           </Link>
           <Link href="/pc-builder">
             <Button type="primary">PC Builder</Button>
