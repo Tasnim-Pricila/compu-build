@@ -13,7 +13,7 @@ const Header = () => {
   // const [user, loading, error] = useAuthState(auth);
   const router = useRouter();
 
-  const [logOut] = useSignOut(auth);
+  // const [logOut] = useSignOut(auth);
   const handleOpenChange = (flag) => {
     setOpen(flag);
   };
