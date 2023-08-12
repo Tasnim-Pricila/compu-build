@@ -30,6 +30,7 @@ const ComponentCard = ({ component }) => {
       >
         <Meta title={component?.name} description={component?.description} />
         <Rate allowHalf defaultValue={4.5} />
+        <p>{component?.category} </p>
         <p>{component?.price} /-</p>
         <p>{component?.status}</p>
       </Card>

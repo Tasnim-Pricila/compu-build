@@ -6,11 +6,9 @@ import { setCategory } from "@/redux/features/components/componentSlice";
 import { useRouter } from "next/router";
 
 const FeaturedCategories = ({allCategories}) => {
-  const dispatch = useAppDispatch();
   const router = useRouter();
-  const handleFilter = (category) => {
-    dispatch(setCategory(category));
-    router.push('/components/allComponents')
+  const handleFilter = (categoryName) => {
+    router.push(`/category/${categoryName}`)
   }
   
   return (
