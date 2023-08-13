@@ -20,7 +20,7 @@ const SocialLogin = () => {
           style={{ fontSize: "30px", marginRight: "10px" }}
           onClick={() =>
             signIn("google", {
-              callbackUrl: "http://localhost:3000/",
+              callbackUrl: "https://compu-build.vercel.app/",
             })
           }
         />
@@ -28,7 +28,7 @@ const SocialLogin = () => {
           style={{ fontSize: "30px" }}
           onClick={() =>
             signIn("github", {
-              callbackUrl: "http://localhost:3000/",
+              callbackUrl: "https://compu-build.vercel.app/",
             })
           }
         />
