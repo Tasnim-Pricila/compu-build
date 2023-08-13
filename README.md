@@ -1,4 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Client Side Link : [https://github.com/Tasnim-Pricila/compu-build](https://github.com/Tasnim-Pricila/compu-build)
+### Backend Side Link : [https://github.com/Tasnim-Pricila/compu-build-server](https://github.com/Tasnim-Pricila/compu-build-server) 
+### Website Live Link : [https://compu-build.vercel.app/](https://compu-build.vercel.app/) 
+
+### **About Project** :
+
+1. This is a Single-Page-Application website of a pc building website.
+4. Users can add their reviews for the books.
+5. User is able to filtered products by category.
+5. User can build their pc by using this website.
+6. Website is responsive for all screen sizes.
+
+
+This is a [Next.js](https://nextjs.org/) project.
 
 ## Getting Started
 
@@ -22,17 +35,4 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
