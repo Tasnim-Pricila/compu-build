@@ -6,6 +6,7 @@ const { Title } = Typography;
 
 const ComponentDetail = ({ component }) => {
   const [avgRating, setAvgRating] = useState(0);
+  const features = component?.keyFeatures;
 
   useEffect(() => {
     let sum = 0;
@@ -47,27 +48,66 @@ const ComponentDetail = ({ component }) => {
             {component?.price} /-
           </Title>
           <Title level={5}>Key Features: </Title>
-          <Typography style={{ marginTop: "10px" }}>
-            Brand: {component?.keyFeatures?.brand}
+          <Typography >
+            Brand: {features?.brand}
           </Typography>
-          <Typography style={{ marginTop: "10px" }}>
-            Model: {component?.keyFeatures?.model}
+          <Typography >
+            Model: {features?.model}
           </Typography>
-          <Typography style={{ marginTop: "10px" }}>
-            {component?.keyFeatures?.specification}
+          <Typography >
+            {features?.specification}
           </Typography>
-          <Typography style={{ marginTop: "10px" }}>
-            Cache: {component?.keyFeatures?.cache}
+          <Typography >
+            {features?.type}
           </Typography>
-          <Typography style={{ marginTop: "10px" }}>
-            Clock Speed: {component?.keyFeatures?.clockSpeed}
+          <Typography >
+            {features?.speed}
           </Typography>
-          <Typography style={{ marginTop: "10px" }}>
-            Power: {component?.keyFeatures?.power}
+          <Typography >
+            {features?.capacity}
           </Typography>
-          <Typography style={{ marginTop: "10px" }}>
-            Socket: {component?.keyFeatures?.socket}
+          <Typography >
+            {features?.latency}
           </Typography>
+          <Typography >
+            {features?.cache}
+          </Typography>
+          <Typography >
+            {features?.clockSpeed}
+          </Typography>
+          <Typography >
+            {features?.power}
+          </Typography>
+          <Typography >
+            {features?.socket}
+          </Typography>
+          <Typography >
+            {features?.formFactor}
+          </Typography>
+          <Typography>{features?.slots}</Typography>
+          <Typography>{features?.PCI}</Typography>
+          <Typography>{features?.storage}</Typography>
+          <Typography>{features?.networking}</Typography>
+          <Typography>{features?.wattage}</Typography>
+          <Typography>{features?.efficiency}</Typography>
+          <Typography>{features?.modularType}</Typography>
+          <Typography>{features?.fan}</Typography>
+          <Typography>{features?.connector}</Typography>
+          <Typography>{features?.protections}</Typography>
+          <Typography>{features?.certifications}</Typography>
+          <Typography>{features?.displaySize}</Typography>
+          <Typography>{features?.readSpeed}</Typography>
+          <Typography>{features?.writeSpeed}</Typography>
+          <Typography>{features?.resolution}</Typography>
+          <Typography>{features?.panelType}</Typography>
+          <Typography>{features?.refreshRate}</Typography>
+          <Typography>{features?.responseTime}</Typography>
+          <Typography>{features?.ports}</Typography>
+          <Typography>{features?.switches}</Typography>
+          <Typography>{features?.backlighting}</Typography>
+          <Typography>{features?.extraKeys}</Typography>
+          <Typography>{features?.wristRest}</Typography>
+          <Typography>{features?.connectivity}</Typography>
           <Title
             level={5}
             style={{

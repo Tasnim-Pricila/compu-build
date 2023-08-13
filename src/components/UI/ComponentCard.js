@@ -29,15 +29,15 @@ const ComponentCard = ({ component }) => {
         cover={
           <Image
             width="250"
-            height="350"
+            height="250"
             src={component?.image}
-            layout="responsive"
+            // layout="responsive"
             alt="example"
             onClick={() => router.push(`/components/${component._id}`)}
           />
         }
       >
-        <Meta title={component?.name} description={component?.description} />
+        <Meta title={component?.name} description={component?.description?.length > 100 ? component?.description?.slice(0, 100)+ "..." : component?.description} />
         <Rate disabled allowHalf value={avgRating} />
         <p>{component?.category} </p>
         <p>{component?.price} /-</p>

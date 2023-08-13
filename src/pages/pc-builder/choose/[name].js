@@ -9,14 +9,10 @@ const Choose = ({ compo }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { category } = useAppSelector((state) => state.component);
-  // let components;
-  // if (category) {
-    const components = compo?.data?.filter(
-      (component) => component?.category === category
-    );
-  // } else {
-  //   components = compo.data;
-  // }
+
+  const components = compo?.data?.filter(
+    (component) => component?.category === category
+  );
 
   const handleBuilder = (component) => {
     dispatch(setProcessor(component));
@@ -58,7 +54,7 @@ const Choose = ({ compo }) => {
             >
               <Card.Meta
                 title={component?.name}
-                description={component?.description}
+                description={component?.description?.length > 100 ? component?.description?.slice(0, 100)+ "..." : component?.description}
               />
               <p>{component?.category}</p>
               <Rate allowHalf defaultValue={4.5} />
