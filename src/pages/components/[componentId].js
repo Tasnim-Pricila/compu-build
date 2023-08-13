@@ -24,6 +24,7 @@ export const getStaticPaths = async () => {
     paths,
     fallback: false,
   };
+
 };
 
 export const getStaticProps = async (context) => {
@@ -37,5 +38,6 @@ export const getStaticProps = async (context) => {
     props: {
       component: data,
     },
+    revalidate: 10
   };
 };

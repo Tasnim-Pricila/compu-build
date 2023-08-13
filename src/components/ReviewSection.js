@@ -1,3 +1,4 @@
+import { useEditComponentMutation } from "@/redux/features/components/componentApi";
 import { CommentOutlined } from "@ant-design/icons";
 import {
   Avatar,
@@ -14,9 +15,9 @@ import {
 } from "antd";
 import React, { useState } from "react";
 
-const ReviewSection = ({ reviews }) => {
-  //   console.log(reviews);
+const ReviewSection = ({ component, reviews }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editComponent, { error }] = useEditComponentMutation();
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -30,12 +31,17 @@ const ReviewSection = ({ reviews }) => {
     setIsModalOpen(false);
   };
   const [form] = Form.useForm();
-  const onFinish = () => {
+
+  const onFinish = (values) => {
     message.success("Submit success!");
+    const data = { reviews: [...reviews, values] };
+    editComponent({ id: component?._id, data });
+    setIsModalOpen(false);
   };
   const onFinishFailed = () => {
     message.error("Submit failed!");
   };
+
   return (
     <div style={{ marginBottom: "20px" }}>
       <Row>
@@ -86,11 +92,11 @@ const ReviewSection = ({ reviews }) => {
             <List.Item>
               <List.Item.Meta
                 avatar={<Avatar src={review?.user?.image} />}
-                title={review.reviewedBy}
+                title={review?.reviewedBy}
                 description={
                   <div>
-                    <Rate disabled allowHalf defaultValue={review.rating} />
-                    <p>{review.comment}</p>
+                    <Rate disabled allowHalf defaultValue={review?.rating} />
+                    <p>{review?.comment}</p>
                   </div>
                 }
               />
@@ -98,7 +104,6 @@ const ReviewSection = ({ reviews }) => {
           )}
         />
       )}
-
       <Modal
         title="Write Review"
         open={isModalOpen}
@@ -112,6 +117,20 @@ const ReviewSection = ({ reviews }) => {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
+          <Form.Item
+            name="reviewedBy"
+            label="Your Name"
+            rules={[
+              {
+                required: true,
+              },
+              {
+                type: "string",
+              },
+            ]}
+          >
+            <Input placeholder="Your Name" />
+          </Form.Item>
           <Form.Item
             name="rating"
             label="Rating"
@@ -127,7 +146,7 @@ const ReviewSection = ({ reviews }) => {
             <Rate allowHalf defaultValue={0} />
           </Form.Item>
           <Form.Item
-            name="review"
+            name="comment"
             label="Your review"
             rules={[
               {
@@ -135,7 +154,7 @@ const ReviewSection = ({ reviews }) => {
               },
               {
                 type: "string",
-                min: 6,
+                min: 3,
               },
             ]}
           >

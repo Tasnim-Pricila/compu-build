@@ -1,9 +1,20 @@
 import { Col, Rate, Row, Typography } from "antd";
 import Image from "next/image";
 import ReviewSection from "./ReviewSection";
+import { useEffect, useState } from "react";
 const { Title } = Typography;
 
 const ComponentDetail = ({ component }) => {
+  const [avgRating, setAvgRating] = useState(0);
+
+  useEffect(() => {
+    let sum = 0;
+    component?.reviews?.forEach((review) => {
+      sum = sum + review?.rating;
+      setAvgRating(sum / component?.reviews?.length);
+    });
+  }, [component?.reviews, avgRating]);
+
   return (
     <div style={{ width: "100%", padding: "0 20px" }}>
       <Row
@@ -26,7 +37,8 @@ const ComponentDetail = ({ component }) => {
         </Col>
         <Col xs={24} md={12} lg={16}>
           <Title level={3}>{component?.name}</Title>
-          <Rate allowHalf defaultValue={4.5} /> 61 Reviews
+          <Rate allowHalf value={avgRating} disabled />{" "}
+          {component?.reviews?.length} Reviews
           <Typography style={{ marginTop: "10px" }}>
             {component?.category}
           </Typography>
@@ -70,7 +82,7 @@ const ComponentDetail = ({ component }) => {
           <Typography>3 Years (No Warranty for Fan or Cooler)</Typography>
         </Col>
       </Row>
-      <ReviewSection reviews={component?.reviews} />
+      <ReviewSection component={component} reviews={component?.reviews} />
     </div>
   );
 };

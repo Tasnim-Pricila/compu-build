@@ -57,5 +57,6 @@ export const getStaticProps = async () => {
     props: {
       allComponents: comData,
     },
+    revalidate: 60
   };
 };
