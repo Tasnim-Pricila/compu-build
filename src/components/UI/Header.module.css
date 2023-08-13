@@ -1,0 +1,19 @@
+.header{
+    flex-direction: row;
+    min-height: auto;
+}
+.menuIcon{
+    display: none;
+}
+.ant-menu .ant-menu-submenu-arrow {
+    display: none !important;
+}
+@media only screen and (max-width: 700px) {
+   
+    .menu{
+        display: none;
+    }
+    .menuIcon{
+        display: block;
+    }
+}

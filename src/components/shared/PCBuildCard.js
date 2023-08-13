@@ -31,14 +31,15 @@ const PCBuildCard = ({
       style={{
         border: "1px solid gray",
         margin: "40px 20px",
+        // width: '100%'
       }}
       justify="center"
       align="middle"
     >
-      <Col span={2}>
+      <Col xs={2}>
         <Image src={image} alt="processor" layout="responsive"></Image>
       </Col>
-      <Col span={15}>
+      <Col xs={15}>
         <Typography.Title level={5}>{title}</Typography.Title>
         {Object.keys(component).length !== 0 ? (
           <div style={{ paddingBottom: "10px" }}>
@@ -54,16 +55,16 @@ const PCBuildCard = ({
           <Skeleton active paragraph={{ rows: 0 }} />
         )}
       </Col>
-      <Col span={4}>
-        {component ? (
+      <Col xs={6} md={4}>
+        {Object.keys(component).length !== 0 ? (
           <Typography.Title level={4} style={{ marginTop: 0 }}>
-            {componentPrice}
+            {componentPrice} /-
           </Typography.Title>
         ) : (
           <Skeleton active paragraph={{ rows: 0 }} />
         )}
       </Col>
-      <Col span={3}>
+      <Col xs={6} md={3} style={{ marginBottom: '5px'}}>
         <Button type="primary" onClick={() => handleChoose(category)}>
           Choose
         </Button>

@@ -1,10 +1,16 @@
 // import { auth } from "@/firebase/firebase.auth";
-import { DownOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Dropdown, Layout, Space, Typography } from "antd";
+import {
+  DownOutlined,
+  LogoutOutlined,
+  MenuFoldOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { Button, Dropdown, Layout, Menu, Space, Typography } from "antd";
 import { SessionProvider, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import styles from "./Header.module.css";
 // import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 
 const Header = () => {
@@ -17,6 +23,7 @@ const Header = () => {
   const handleOpenChange = (flag) => {
     setOpen(flag);
   };
+  const [show, setShow] = useState(false);
 
   const items = [
     {
@@ -51,6 +58,7 @@ const Header = () => {
   return (
     <SessionProvider>
       <Layout.Header
+        className={styles.header}
         style={{
           display: "flex",
           alignItems: "center",
@@ -65,7 +73,67 @@ const Header = () => {
           </Typography>
         </Link>
 
-        <Space>
+        <Menu className={styles.menuIcon} theme="dark" >
+          <Menu.SubMenu
+            title={
+             
+                <MenuFoldOutlined
+                />
+             
+            }
+          >
+            <Menu.Item key="project">
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                onOpenChange={handleOpenChange}
+                open={open}
+              >
+                <Button type="text" block style={{ color: "white" }}>
+                  <Space >
+                    Categories
+                    <DownOutlined />
+                  </Space>
+                </Button>
+              </Dropdown>
+            </Menu.Item>
+            <Menu.Item key="about-us">
+            <Link href="/components/allComponents">
+            <Button type="text" style={{ color: "white" }}>
+              Components
+            </Button>
+          </Link>
+            </Menu.Item>
+            <Menu.Item key="log-out">
+            <Link href="/pc-builder">
+            <Button type="primary">PC Builder</Button>
+          </Link>
+            </Menu.Item>
+            <Menu.Item>
+            {session?.user?.email ? (
+            <Button
+              type="text"
+              block
+              style={{ color: "red", fontWeight: "bold" }}
+              onClick={() => signOut()}
+            >
+              <LogoutOutlined />
+              Logout
+            </Button>
+          ) : (
+            <Link href="/login">
+              <Button type="text" block style={{ color: "white" }}>
+                <UserOutlined />
+                <span className={styles.loginText}>Login / Register</span>
+              </Button>
+            </Link>
+          )}
+            </Menu.Item>
+          </Menu.SubMenu>
+        </Menu>
+
+        <Space className={styles.menu}>
           <Dropdown
             menu={{
               items,
@@ -80,13 +148,13 @@ const Header = () => {
               </Space>
             </Button>
           </Dropdown>
-          <Link href="/components/allComponents">
+          <Link href="/components/allComponents" >
             <Button type="text" style={{ color: "white" }}>
               Components
             </Button>
           </Link>
           <Link href="/pc-builder">
-            <Button type="primary">PC Builder</Button>
+            <Button type="primary" style={{ color: "white" }}>PC Builder</Button>
           </Link>
           {session?.user?.email ? (
             <Button
@@ -102,7 +170,7 @@ const Header = () => {
             <Link href="/login">
               <Button type="text" block style={{ color: "white" }}>
                 <UserOutlined />
-                Login / Register
+                <span className={styles.loginText}>Login / Register</span>
               </Button>
             </Link>
           )}
